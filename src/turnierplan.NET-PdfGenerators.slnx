@@ -1,2 +1,7 @@
 <Solution>
+  <Folder Name="/Generators/">
+    <Project Path="Turnierplan.PdfGenerators.QrCodes/Turnierplan.PdfGenerators.QrCodes.csproj" />
+  </Folder>
+  <Project Path="Turnierplan.PdfGenerators.Common/Turnierplan.PdfGenerators.Common.csproj" />
+  <Project Path="Turnierplan.PdfGenerators.Console/Turnierplan.PdfGenerators.Console.csproj" />
 </Solution>
