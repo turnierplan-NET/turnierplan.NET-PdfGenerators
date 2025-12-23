@@ -11,4 +11,8 @@ public sealed record ChangingRoomSignsOptions : GeneratorOptionsBase
     public string? HomeTeamNamePattern { get; set; }
 
     public int? NumberOfChangingRooms { get; set; }
+
+    public string? TitleFormat { get; set; }
+
+    public string? TeamCountFormat { get; set; }
 }
