@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using QuestPDF.Infrastructure;
 using Turnierplan.Adapter;
+using Turnierplan.PdfGenerators.ChangingRoomSigns;
 using Turnierplan.PdfGenerators.Common;
 using Turnierplan.PdfGenerators.Console.Options;
 using Turnierplan.PdfGenerators.QrCodes;
@@ -51,18 +52,20 @@ logger.LogInformation("Adapter configuration has been read successfully");
 
 Type[] knownGenerators =
 [
+    typeof(ChangingRoomSignsGenerator),
     typeof(QrCodesGenerator)
 ];
 
 foreach (var generatorType in knownGenerators)
 {
     var generatorName = generatorType.Name;
-    var relevantSection = configuration.GetSection("Generators").GetSection(generatorName);
+    var configurationSectionName = generatorName.EndsWith("Generator") ? generatorName[..^"Generator".Length] : generatorName;
+    var relevantSection = configuration.GetSection("Generators").GetSection(configurationSectionName);
     var isEnabled = relevantSection.GetValue<bool>("IsEnabled");
 
     if (!isEnabled)
     {
-        logger.LogInformation("The generator '{generatorName}' is not enabled by configuration and will be skipped", generatorName);
+        logger.LogTrace("The generator '{generatorName}' is not enabled by configuration and will be skipped", generatorName);
         continue;
     }
 

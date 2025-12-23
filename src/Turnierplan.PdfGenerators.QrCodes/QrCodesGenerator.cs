@@ -6,8 +6,8 @@ using QuestPDF.Infrastructure;
 using SkiaSharp;
 using SkiaSharp.QrCode;
 using Turnierplan.Adapter;
-using Turnierplan.Adapter.Models;
 using Turnierplan.PdfGenerators.Common;
+using Turnierplan.PdfGenerators.Common.Extensions;
 
 namespace Turnierplan.PdfGenerators.QrCodes;
 
@@ -21,17 +21,7 @@ public sealed class QrCodesGenerator : GeneratorBase<QrCodesOptions>
             return;
         }
 
-        var tournamentHeaders = await client.GetTournaments(options.FolderId);
-        var tournaments = new List<Tournament>();
-
-        foreach (var header in tournamentHeaders)
-        {
-            var tournament = await client.GetTournament(header.Id);
-            tournaments.Add(tournament);
-        }
-
-        tournaments = tournaments.OrderBy(x => x.Name).ToList();
-
+        var tournaments = await client.GetAllTournamentsWithDetailsAsync(options.FolderId);
         Logger.LogTrace("Successfully loaded {TournamentCount} tournaments for QR codes", tournaments.Count);
 
         CreateDocument(container =>

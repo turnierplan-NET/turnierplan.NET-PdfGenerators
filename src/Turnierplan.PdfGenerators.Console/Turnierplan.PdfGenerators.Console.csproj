@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Turnierplan.PdfGenerators.ChangingRoomSigns\Turnierplan.PdfGenerators.ChangingRoomSigns.csproj"/>
     <ProjectReference Include="..\Turnierplan.PdfGenerators.QrCodes\Turnierplan.PdfGenerators.QrCodes.csproj"/>
   </ItemGroup>
 </Project>
