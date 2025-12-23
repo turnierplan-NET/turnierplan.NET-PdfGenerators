@@ -30,6 +30,8 @@ public sealed class QrCodesGenerator : GeneratorBase<QrCodesOptions>
             tournaments.Add(tournament);
         }
 
+        tournaments = tournaments.OrderBy(x => x.Name).ToList();
+
         Logger.LogTrace("Successfully loaded {TournamentCount} tournaments for QR codes", tournaments.Count);
 
         CreateDocument(container =>

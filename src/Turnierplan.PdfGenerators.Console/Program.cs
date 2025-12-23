@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using QuestPDF.Infrastructure;
 using Turnierplan.Adapter;
 using Turnierplan.PdfGenerators.Common;
 using Turnierplan.PdfGenerators.Console.Options;
@@ -18,6 +19,8 @@ Console.WriteLine(@"                                                     \ \_\")
 Console.WriteLine(@"                                                      \/_/   turnierplan.NET PDF Generators");
 Console.WriteLine();
 
+QuestPDF.Settings.License = LicenseType.Community;
+
 // Switch base path if we are running from 'bin/Release/net10.0' folder
 var basePath = File.Exists(Path.Join(Directory.GetCurrentDirectory(), "../../../appsettings.json"))
     ? Path.Join(Directory.GetCurrentDirectory(), "../../../")
@@ -29,7 +32,7 @@ var configurationBuilder = new ConfigurationBuilder()
     .AddUserSecrets<Program>()
     .AddEnvironmentVariables();
 
-using var serviceProvider = new ServiceCollection().AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)).BuildServiceProvider();
+await using var serviceProvider = new ServiceCollection().AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)).BuildServiceProvider();
 var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
 var logger = loggerFactory.CreateLogger<Program>();
 
