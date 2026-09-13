@@ -14,5 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Turnierplan.PdfGenerators.ChangingRoomSigns\Turnierplan.PdfGenerators.ChangingRoomSigns.csproj"/>
     <ProjectReference Include="..\Turnierplan.PdfGenerators.QrCodes\Turnierplan.PdfGenerators.QrCodes.csproj"/>
+    <ProjectReference Include="..\Turnierplan.PdfGenerators.TournamentOverview\Turnierplan.PdfGenerators.TournamentOverview.csproj"/>
   </ItemGroup>
 </Project>

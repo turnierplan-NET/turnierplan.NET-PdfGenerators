@@ -7,6 +7,7 @@ using Turnierplan.PdfGenerators.ChangingRoomSigns;
 using Turnierplan.PdfGenerators.Common;
 using Turnierplan.PdfGenerators.Console.Options;
 using Turnierplan.PdfGenerators.QrCodes;
+using Turnierplan.PdfGenerators.TournamentOverview;
 
 Console.WriteLine();
 Console.WriteLine( "  __                                                     ___                                        __");
@@ -53,7 +54,8 @@ logger.LogInformation("Adapter configuration has been read successfully");
 Type[] knownGenerators =
 [
     typeof(ChangingRoomSignsGenerator),
-    typeof(QrCodesGenerator)
+    typeof(QrCodesGenerator),
+    typeof(TournamentOverviewGenerator)
 ];
 
 foreach (var generatorType in knownGenerators)

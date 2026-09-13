@@ -2,6 +2,7 @@
   <Folder Name="/Generators/">
     <Project Path="Turnierplan.PdfGenerators.ChangingRoomSigns\Turnierplan.PdfGenerators.ChangingRoomSigns.csproj" />
     <Project Path="Turnierplan.PdfGenerators.QrCodes/Turnierplan.PdfGenerators.QrCodes.csproj" />
+    <Project Path="Turnierplan.PdfGenerators.TournamentOverview\Turnierplan.PdfGenerators.TournamentOverview.csproj" />
   </Folder>
   <Project Path="Turnierplan.PdfGenerators.Common/Turnierplan.PdfGenerators.Common.csproj" />
   <Project Path="Turnierplan.PdfGenerators.Console/Turnierplan.PdfGenerators.Console.csproj" />
